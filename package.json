@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dispatch": "node dispatch"
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/talleman21/gh-dispatcher/issues"
   },
-  "homepage": "https://github.com/talleman21/gh-dispatcher#readme"
+  "homepage": "https://github.com/talleman21/gh-dispatcher#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0"
+  }
 }
