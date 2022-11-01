@@ -18,26 +18,40 @@ on:
         default: 'gh-action-receiver'
 
 jobs:
-  build:
-    name: lets trigger it
+  dispatch:
     runs-on: ubuntu-latest
-    env:
-      pat_token: ${{ secrets.coolToken }}
-      payload_Baseline_Number: "I'm a random baseline number"
-      payload_Baseline_Revision: "I'm a random revison"
-      target-workflow: ${{ inputs.target-workflow}}
-      target-workflow-github-account: ${{ inputs.target-workflwo-github-account}}
-      target-workflow-repo: ${{ inputs.target-workflwo-repo}}
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Repository dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with: 
+          token: ${{secrets.coolToken}}
+          repository: ${{ inputs.target-workflow-repo }}
+          event-type: ${{ inputs.target-workflow }}
+  # build:
+  #   name: lets trigger it
+
+
+
+  #   runs-on: ubuntu-latest
+
+
+  #   env:
+  #     pat_token: ${{ secrets.coolToken }}
+  #     payload_Baseline_Number: "I'm a random baseline number"
+  #     payload_Baseline_Revision: "I'm a random revison"
+  #     target-workflow: ${{ inputs.target-workflow}}
+  #     target-workflow-github-account: ${{ inputs.target-workflow-github-account}}
+  #     target-workflow-repo: ${{ inputs.target-workflwo-repo}}
+
+  #   steps:
+  #     - uses: actions/checkout@v3
       
-      - name: setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: yarn
-      - run: yarn dispatch
+  #     - name: setup node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
+  #     - run: yarn
+  #     - run: yarn dispatch
       
 
 
