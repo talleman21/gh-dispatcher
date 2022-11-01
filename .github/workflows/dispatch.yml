@@ -1,17 +1,41 @@
 name: Deploy
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - "main"
+    inputs:
+      target-workflow:
+        description: 'workflow type to trigger'
+        required: true
+        default: 'run-it-ralph'
+    
+      target-workflow-github-account:
+        description: "target github account owner"
+        required: true
+        default: 'talleman21'
+      
+      target-workflow-repo:
+        description: 'target github repo name'
+        required: true
+        default: 'gh-action-receiver'
+
 jobs:
   build:
-    name: Run API
+    name: lets trigger it
     runs-on: ubuntu-latest
+    env:
+      pat_token: ${{ secrets.coolToken }}
+      payload_Baseline_Number: "I'm a random baseline number"
+      payload_Baseline_Revision: "I'm a random revison"
+
     steps:
-      - name: Build API
-        run: |
-          echo "BUILD API"
-          sleep 10s
+      - uses: actions/checkout@v3
+      
+      - name: setup node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: yarn dispatch
+      
+
+
     
 
