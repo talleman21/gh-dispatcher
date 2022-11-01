@@ -25,6 +25,9 @@ jobs:
       pat_token: ${{ secrets.coolToken }}
       payload_Baseline_Number: "I'm a random baseline number"
       payload_Baseline_Revision: "I'm a random revison"
+      target-workflow: ${{ inputs.target-workflow}}
+      target-workflow-github-account: ${{ inputs.target-workflwo-github-account}}
+      target-workflow-repo: ${{ inputs.target-workflwo-repo}}
 
     steps:
       - uses: actions/checkout@v3
@@ -35,10 +38,6 @@ jobs:
           node-version: 16
       - run: yarn
       - run: yarn dispatch
-        with:
-          target-workflow: ${{ inputs.target-workflow}}
-          target-workflow-github-account: ${{ inputs.target-workflwo-github-account}}
-          target-workflow-repo: ${{ inputs.target-workflwo-repo}}
       
 
 
