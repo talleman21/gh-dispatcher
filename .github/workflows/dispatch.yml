@@ -35,6 +35,10 @@ jobs:
           node-version: 16
       - run: yarn
       - run: yarn dispatch
+        with:
+          target-workflow: ${{ inputs.target-workflow}}
+          target-workflow-github-account: ${{ inputs.target-workflwo-github-account}}
+          target-workflow-repo: ${{ inputs.target-workflwo-repo}}
       
 
 
