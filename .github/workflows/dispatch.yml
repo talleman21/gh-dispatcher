@@ -24,7 +24,7 @@ jobs:
       - name: Repository dispatch
         uses: peter-evans/repository-dispatch@v2
         with: 
-          token: ${{secrets.coolToken}}
+          token: ${{ secrets.coolToken }}
           repository: ${{ inputs.target-workflow-repo }}
           event-type: ${{ inputs.target-workflow }}
   # build:
