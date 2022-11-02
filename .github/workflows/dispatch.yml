@@ -15,7 +15,7 @@ on:
       target-workflow-repo:
         description: 'target github repo name'
         required: true
-        default: 'gh-action-receiver'
+        default: 'talleman21/gh-action-receiver'
 
 jobs:
   dispatch:
